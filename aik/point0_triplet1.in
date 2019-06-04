@@ -1,0 +1,57 @@
+$comment
+I think this is equilibrium geometry. I symmetrized it with IQmol
+$end
+
+$molecule
+0 1
+N          0.00000        0.95064        0.03617
+N          0.00000       -1.01646       -1.17678
+C          0.00000        0.37240       -1.21738
+C          0.00000       -1.73906       -0.01025
+C          0.00000       -1.14569        1.19934
+C          0.00000        0.31332        1.28805
+O          0.00000        0.96679        2.30939
+O          0.00000        0.99654       -2.25445
+H          0.00000        1.96592        0.05068
+H          0.00000       -1.47161       -2.07989
+H          0.00000       -2.82299       -0.12835
+H          0.00000       -1.71696        2.12384
+$end
+
+$rem
+JOBTYPE SP
+BASIS 6-31G*
+METHOD HF
+$end
+
+@@@
+
+$molecule
+0 3
+N          0.00000        0.95064        0.03617
+N          0.00000       -1.01646       -1.17678
+C          0.00000        0.37240       -1.21738
+C          0.00000       -1.73906       -0.01025
+C          0.00000       -1.14569        1.19934
+C          0.00000        0.31332        1.28805
+O          0.00000        0.96679        2.30939
+O          0.00000        0.99654       -2.25445
+H          0.00000        1.96592        0.05068
+H          0.00000       -1.47161       -2.07989
+H          0.00000       -2.82299       -0.12835
+H          0.00000       -1.71696        2.12384
+$end
+
+$rem
+JOBTYPE SP
+BASIS 6-31G*
+SCF_GUESS read
+METHOD EOM-CCSD
+cvs_ip_states  [4,0]
+cc_trans_prop  true
+cc_do_dyson = true
+!state_analysis true
+!molden_format  true
+!nto_pairs      3
+!pop_mulliken   true
+$end
