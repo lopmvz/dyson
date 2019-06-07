@@ -53,31 +53,33 @@ y22 = data22[:,1]
 params = {'mathtext.default': 'regular' }          
 plt.rcParams.update(params)
 
-#f, (plt, ax2) = plt.subplots(2, sharex=True, sharey=True)
+f, (ax1, ax2, ax3) = plt.subplots(3, sharex=True, sharey=True)
 
 plt.title('')
-plt.xlim(304,285) 
+plt.xlim(306,285) 
 plt.xlabel('Excitation energy (eV)')
 yip = 2.5
 plt.yticks([])
-plt.ylabel('Intensity (arb. units)')
+plt.ylabel('                                                           Intensity (arb. units)')
 plt.ylim(0.0,yip)#
-plt.plot(x0+xshift, y0, '#CC0000', label='S$_0$ ', linewidth=2)#, linestyle='--')
-plt.plot(x1+xshift, y1, '#000080', label='S$_1$ ', linewidth=2)#, linestyle='--')
-plt.plot(x2+xshift, y2, '#006400', label='S$_2$ ', linewidth=2)#, linestyle='--')
+ax1.plot(x0+xshift, y0, '#CC0000', label='S$_0$ ', linewidth=2)#, linestyle='--')
+ax2.plot(x1+xshift, y1, '#000080', label='S$_1$ ', linewidth=2)#, linestyle='--')
+ax3.plot(x2+xshift, y2, '#006400', label='S$_2$ ', linewidth=2)#, linestyle='--')
 
 
 n=len(stcksx0)
 for i in range(n):
-    plt.plot([stcksx0[i]+xshift,stcksx0[i]+xshift],[0,stcksy0[i]],'#CC0000',linewidth=1.0)
+    ax1.plot([stcksx0[i]+xshift,stcksx0[i]+xshift],[0,stcksy0[i]],'#CC0000',linewidth=1.0)
 n=len(stcksx1)
 for i in range(n):
-    plt.plot([stcksx1[i]+xshift,stcksx1[i]+xshift],[0,stcksy1[i]],'#000080',linewidth=1.0)
+    ax2.plot([stcksx1[i]+xshift,stcksx1[i]+xshift],[0,stcksy1[i]],'#000080',linewidth=1.0)
 n=len(stcksx2)
 for i in range(n):
-    plt.plot([stcksx2[i]+xshift,stcksx2[i]+xshift],[0,stcksy2[i]],'#006400',linewidth=1.0)
-plt.legend(loc='upper right',fontsize='small', framealpha=1)
-#f.subplots_adjust(hspace=0)
-#plt.setp([a.get_xticklabels() for a in f.axes[:-1]], visible=False)
+    ax3.plot([stcksx2[i]+xshift,stcksx2[i]+xshift],[0,stcksy2[i]],'#006400',linewidth=1.0)
+ax1.legend(loc='upper right',fontsize='small', framealpha=1)
+ax2.legend(loc='upper right',fontsize='small', framealpha=1)
+ax3.legend(loc='upper right',fontsize='small', framealpha=1)
+f.subplots_adjust(hspace=0)
+plt.setp([a.get_xticklabels() for a in f.axes[:-1]], visible=False)
 plt.savefig('uracil_c_tr_xps.pdf')
 plt.show()
