@@ -56,15 +56,15 @@ plt.rcParams.update(params)
 #f, (plt, ax2) = plt.subplots(2, sharex=True, sharey=True)
 
 plt.title('')
-plt.xlim(545,535) 
+plt.xlim(550,535) 
 plt.xlabel('Excitation energy (eV)')
-yip = 3
+yip = 3.5
 plt.yticks([])
 plt.ylabel('Intensity (arb. units)')
 plt.ylim(0.0,yip)#
 plt.plot(x0+xshift, y0, '#CC0000', label='S$_0$ ', linewidth=2)#, linestyle='--')
-plt.plot(x1+xshift, y1, '#000080', label='S$_1$ ', linewidth=2)#, linestyle='--')
-plt.plot(x2+xshift, y2, '#006400', label='S$_2$ ', linewidth=2)#, linestyle='--')
+plt.plot(x1+xshift, y1, '#000080', label='S$_1$ ($n\pi^*$)', linewidth=2)#, linestyle='--')
+plt.plot(x2+xshift, y2, '#006400', label='S$_2$ ($\pi\pi^*$)', linewidth=2)#, linestyle='--')
 
 
 n=len(stcksx0)
