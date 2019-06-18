@@ -60,7 +60,7 @@ def read_file( fd ):
 #Left DO (decomposition over AO)
             while (not "Decomposition over AOs for the left alpha Dyson orbital" in curline):
                 curline = next(lineit)
-            curline = next(lineit)
+            #curline = next(lineit)
             left_dyson[nstate-1] = {}
             i = 0
             curline = next(lineit)
@@ -97,50 +97,50 @@ def read_file( fd ):
             geo = fgeo.read()
             fbasis = open("basis", "r")
             basis = fbasis.read()
+            file2 = open("left_dyson", "w") 
+            file2.write(geo)
+            file2.write("[GTO]")
+            file2.write("\n")
+            file2.write(basis)
+            file2.write("\n")
+            file2.write("[MO]\n")
+        #Writing right DO as molden file
+            file4 = open("right_dyson", "w") 
+            file4.write(geo)
+            file4.write("[GTO]")
+            file4.write("\n")
+            file4.write(basis)
+            file4.write("\n")
+            file4.write("[MO]\n")
             for j in range(len(state)):
                 nstate = j+1
         #Writing left DO as molden file
-                file2 = open("left_dyson_%i" %nstate, "w") 
-                file2.write(geo)
-                file2.write("[GTO]")
-                file2.write("\n")
-                file2.write(basis)
-                file2.write("\n")
-                file2.write("[MO]\n")
                 file2.write("Sym=X\n")
                 file2.write("Ene=")
                 file2.write(str(left_norm[j]))
                 file2.write("\n")
                 file2.write("Spin=Alpha\n")
                 file2.write("Occup=1\n")
-                for k in range(len(left_dyson[j])):
-                    file2.write(str(k+1))
-                    file2.write("    ")
-                    file2.write(str(left_dyson[j][k]))
-                    file2.write("\n")
-                file2.write("[5D]")
-        #Writing right DO as molden file
-                file4 = open("right_dyson_%i" %nstate, "w") 
-                file4.write(geo)
-                file4.write("[GTO]")
-                file4.write("\n")
-                file4.write(basis)
-                file4.write("\n")
-                file4.write("[MO]\n")
                 file4.write("Sym=X\n")
                 file4.write("Ene=")
                 file4.write(str(right_norm[j]))
                 file4.write("\n")
                 file4.write("Spin=Alpha\n")
                 file4.write("Occup=1\n")
-                for k in range(len(right_dyson[j])):
+                for k in range(len(left_dyson[j])):
+                    file2.write(str(k+1))
+                    file2.write("    ")
+                    file2.write(str(left_dyson[j][k]))
+                    file2.write("\n")
+                #for k in range(len(right_dyson[j])):
                     file4.write(str(k+1))
                     file4.write("    ")
                     file4.write(str(right_dyson[j][k]))
                     file4.write("\n")
-                file4.write("[5D]")
-                k = 0
+                    k = 0
+            file2.write("[5D]")
             file2.close()
+            file4.write("[5D]")
             file4.close()
 
 
