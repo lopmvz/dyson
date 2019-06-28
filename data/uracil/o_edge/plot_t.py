@@ -53,7 +53,8 @@ f, (ax1, ax2, ax3) = plt.subplots(3, sharex=True, sharey=True)
 
 plt.title('')
 plt.xlim(550,535) 
-plt.xlabel('Excitation energy (eV)')
+#plt.xlabel('Photon energy (eV)')
+plt.xlabel('Binding energy (eV)')
 yip = 5
 plt.yticks([])
 plt.ylabel('                                                           Intensity (arb. units)')
